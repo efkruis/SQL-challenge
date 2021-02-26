@@ -1,3 +1,9 @@
+--create titles table 
+CREATE TABLE titles (
+  	emp_title_id VARCHAR NOT NULL,
+  	title VARCHAR NOT NULL,
+	PRIMARY KEY (emp_title_id)
+)
 --creating employees table
 CREATE TABLE employees(
 	emp_no INT NOT NULL,
@@ -38,10 +44,4 @@ CREATE TABLE salaries (
 	PRIMARY KEY (emp_no),
 	FOREIGN KEY (emp_no) REFERENCES employees(emp_no),
   	salary INT NOT NULL
-)
---create titles table 
-CREATE TABLE titles (
-  	emp_title_id VARCHAR NOT NULL,
-  	title VARCHAR NOT NULL,
-	PRIMARY KEY (emp_title_id)
 )

@@ -23,19 +23,23 @@ INNER JOIN dept_emp ON dept_emp.emp_no = employees.emp_no
 --Question 5; List first name, last name, and sex for employees whose first name is "Hercules" and last names begin with "B."
 --(https://www.techonthenet.com/sql/and_or.php#:~:text=The%20SQL%20AND%20condition%20and,order%20to%20evaluate%20each%20condition.); (https://stackoverflow.com/questions/16179802/query-to-retrieve-all-people-with-a-last-name-starting-with-a-specific-letter)
 SELECT employees.first_name, employees.last_name, employees.sex
+FROM employees
 WHERE (last_name = 'Hercules' AND last_name = 'B%')
 
 --Question 6; List all employees in the Sales department, including their employee number, last name, first name, and department name
-SELECT employees.first_name, employees.last_name, departments.dept_name, dept_emp.emp_no
+SELECT employees.first_name, employees.last_name, departments.dept_name, employees.emp_no
 FROM employees
-INNER JOIN departments ON departments.dept_no = dept_emp.dept_no
-INNER JOIN dept_emp ON dept_emp.emp_no = employees.emp_no
+INNER JOIN dept_emp ON employees.emp_no = dept_emp.emp_no
+INNER JOIN departments ON dept_emp.dept_no = departments.dept_no
+WHERE departments.dept_name = 'Sales'
+ORDER BY employees.emp_no
 
 --Question 7; List all employees in the Sales and Development departments, including their employee number, last name, first name, and department name.
-SELECT employees.first_name, employees.last_name, departments.dept_name, dept_emp.emp_no
+SELECT employees.first_name, employees.last_name, departments.dept_name, employees.emp_no
 FROM employees
-INNER JOIN departments ON departments.dept_no = dept_emp.dept_no
-INNER JOIN dept_emp ON dept_emp.emp_no = employees.emp_no
+INNER JOIN dept_emp ON employees.emp_no = dept_emp.emp_no
+INNER JOIN departments ON dept_emp.dept_no = departments.dept_no
+WHERE departments.dept_name IN ('Sales', 'Development')
 
 --Question 8; In descending order, list the frequency count of employee last names, i.e., how many employees share each last name.
 --(https://www.w3schools.com/sql/sql_ref_order_by.asp); (https://www.c-sharpcorner.com/blogs/sql-query-to-find-out-the-frequency-of-each-element-in-a-column1)
