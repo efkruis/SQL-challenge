@@ -4,6 +4,7 @@ CREATE TABLE titles (
   	title VARCHAR NOT NULL,
 	PRIMARY KEY (title_id)
 )
+
 --creating employees table
 CREATE TABLE employees(
 	emp_no INT NOT NULL,
@@ -13,8 +14,8 @@ CREATE TABLE employees(
 	last_name VARCHAR NOT NULL,
 	sex VARCHAR NOT NULL,
 	hire_date DATE NOT NULL,
-	PRIMARY KEY (emp_no),
-	FOREIGN KEY (title_id) REFERENCES titles(title_id)
+	FOREIGN KEY (emp_title_id) REFERENCES titles(title_id),
+	PRIMARY KEY (emp_no)
 )
 --creating departments table
 CREATE TABLE departments(
@@ -22,6 +23,7 @@ CREATE TABLE departments(
 	dept_name VARCHAR NOT NULL,
 	PRIMARY KEY(dept_no)
 )
+
 --creating department employee table 
 CREATE TABLE dept_emp (
   	emp_no INT NOT NULL,
@@ -30,6 +32,7 @@ CREATE TABLE dept_emp (
 	dept_no VARCHAR NOT NULL,
 	FOREIGN KEY(dept_no) REFERENCES departments(dept_no)
 )
+
 --create department manager table
 CREATE TABLE dept_manager (
   	dept_no VARCHAR NOT NULL,

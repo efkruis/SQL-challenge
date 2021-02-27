@@ -24,7 +24,7 @@ INNER JOIN dept_emp ON dept_emp.emp_no = employees.emp_no
 --(https://www.techonthenet.com/sql/and_or.php#:~:text=The%20SQL%20AND%20condition%20and,order%20to%20evaluate%20each%20condition.); (https://stackoverflow.com/questions/16179802/query-to-retrieve-all-people-with-a-last-name-starting-with-a-specific-letter)
 SELECT employees.first_name, employees.last_name, employees.sex
 FROM employees
-WHERE (last_name = 'Hercules' AND last_name = 'B%')
+WHERE (first_name = 'Hercules' AND last_name LIKE 'B%')
 
 --Question 6; List all employees in the Sales department, including their employee number, last name, first name, and department name
 SELECT employees.first_name, employees.last_name, departments.dept_name, employees.emp_no
